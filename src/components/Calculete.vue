@@ -7,7 +7,9 @@
       <button @click="calc('+')">+</button>
       <button @click="calc('-')">-</button>
       <button @click="calc('/')">/</button>
+      <button @click="calc('/0')">/0</button>
       <button @click="calc('*')">*</button>
+      <button @click="calc('№')">x</button>
     </div>
     <h1>Ответ:{{ result }}</h1>
   </div>
@@ -15,7 +17,7 @@
 
 <script>
 export default {
-  name: "HelloWorld",
+  name: "Calculete",
   data: () => ({
     operand1: 0,
     operand2: 0,
@@ -30,6 +32,8 @@ export default {
         "-": () => operand1 - operand2,
         "/": () => operand1 / operand2,
         "*": () => operand1 * operand2,
+        "№": () => Math.pow(operand1, operand2),
+        "/0": () => Math.floor(operand1 / operand2),
       };
       this.result = calcOperation[op]();
     },
